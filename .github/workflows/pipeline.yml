@@ -30,3 +30,9 @@ jobs:
     - run: yarn test
     - run: yarn build
     - run: yarn test:e2e
+    - name: Publish JUnit test results      
+      if: always()      
+      uses: actions/upload-artifact@v3      
+      with:        
+        name: junit-results        
+        path: '**/reports/**/*.xml'
